@@ -20,7 +20,7 @@ const authMiddleware = (req, res, next) => {
         console.log(decodedTokenInfo);
 
         req.userInfo = decodedTokenInfo; // Decoded token is STORED so the next middleware or route can use it
-        next(); // now this will call the "/welcome" route, authentication
+        next(); // now this will call the "/welcome" route. (only this 'next()' is enough)
 
     } catch (error) {
         return res.status(401).json({
@@ -29,6 +29,6 @@ const authMiddleware = (req, res, next) => {
         })
     }
 
-    next();
+    // next(); ==>> (This is not needed here, only one 'next()' is enough)
 }
 module.exports = authMiddleware;
