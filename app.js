@@ -5,6 +5,7 @@ const connectDB = require('./database/db');
 const authRoutes = require('./routes/auth-routes');
 const homeRoutes = require('./routes/home-routes');
 const adminRoutes = require('./routes/admin-routes');
+const imageUploadRoutes = require('./routes/image-routes');
 
 // MongoDB Connection
 connectDB();
@@ -16,6 +17,7 @@ app.use(express.json()); // To parse JSON request bodies
 app.use('/api/auth/', authRoutes);
 app.use('/api/home/', homeRoutes);
 app.use('/api/admin/', adminRoutes);
+app.use('/api/image/', imageUploadRoutes);
 
 app.get("/", (req, res) => { res.send("Hello World!"); });
 
